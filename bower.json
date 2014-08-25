@@ -1,0 +1,29 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.2.6",
+    "json3": "~3.2.6",
+    "es5-shim": "~2.1.0",
+    "jquery": "~1.10.2",
+    "bootstrap": "~3.0.3",
+    "angular-resource": "1.2.6",
+    "angular-cookies": "1.2.6",
+    "angular-sanitize": "1.2.6",
+    "angular-route": "1.2.6",
+    "jquery-ui": "~1.11.0",
+    "sortable": "https://raw.githubusercontent.com/angular-ui/ui-sortable/master/src/sortable.js",
+    "jquery.blast.min": "https://raw.githubusercontent.com/julianshapiro/blast/master/jquery.blast.min.js",
+    "jquery.ui.touch-punch.min": "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js",
+    "angular-bootstrap": "~0.11.0",
+    "angular.audio": "https://raw.githubusercontent.com/danielstern/ngAudio/master/angular.audio.js",
+    "underscore": "~1.6.0",
+    "jspdf": "/Users/felipecocco/Documents/workspace/GAP Projects/Version-Control/paragraphscrambler/frontend/app/jsPDF/jspdf.js",
+    "main.min": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/gh-pages/dist/main.min.js",
+    "ng-annotate-text-latest": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/master/dist/ng-annotate-text-latest.js"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.6",
+    "angular-scenario": "1.2.6"
+  }
+}
