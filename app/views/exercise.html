@@ -28,10 +28,24 @@
   font-weight: bold;
   cursor: move;
 }
+
+
+.navbar-center
+{
+    position: absolute;
+    width: 100%;
+    left: 10px;
+    top: 0;
+    text-align: center;
+    margin: auto;
+  height:100%;
+}
+
 </style>
+ <link rel="stylesheet" href="styles/annotation-styles.css" />
 <ngAudio src='http://www.villagegeek.com/downloads/webwavs/adios.wav'>
 </ngAudio>
-<div class="container-fluid" style="padding-top: 50px;">
+<div class="container-fluid" style="padding-top: 0px;">
 	<div class="row">	
 		<div class="col-xs-8 col-xs-offset-1">
 			<div class="page-header">
@@ -39,28 +53,54 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-1">
-			<div ui-sortable="sortableOptions" ng-model="exercise.sentences" class="list" style="max-height:500px; overflow-y:scroll">
-			  <div ng-Class="{longitem: exercise.kind!='Word', item: exercise.kind =='Word'}" ng-repeat="item in exercise.sentences">{{ item.text }}
-			  </div>
-			</div>
+	<div class="row" style="padding-bottom:10vh">
+		<div class="col-xs-10 col-xs-offset-1">
+			<div ui-sortable ng-model="exercise.sentences" class="list" style="height:90%; overflow-y:scroll">
+          <div  ng-repeat="item in exercise.sentences">
+                <ng-annotate-text
+                  class="item"
+                  readonly="true"
+                  popup-controller="'AnnotationController'"
+                  popup-template-url=""
+                  tooltip-controller="'AnnotationController'"
+                  tooltip-template-url="'views/annotations/annotation-tooltip.html'"
+                  annotations="exercise.annotations[item.order]"
+                  on-annotate="onAnnotate"
+                  on-annotate-error="onAnnotateError"
+                  on-popup-show="onPopupShow"
+                  text="item.text">
+                </ng-annotate-text>
+          </div>
+        </div>
 		</div>
-		<div class="col-xs-2">
-			<div class="panel panel-default">
-			  <div class="panel-heading">
-			    <h3 class="panel-title"><center>Results</center></h3>
-			  </div>
-
-			  <ul class="list-group" style="height: 300px; overflow-y:scroll">
-			    <li class="list-group-item" ng-repeat="step in score track by $index">{{step}}</li>
-			    <li class="list-group-item">{{history.ream}}</li>
-			  </ul>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<center><button ng-click="calculateAttempt()" class="btn btn-lg btn-success">Check Answer</button></center>
 	</div>
 </div>
-<object id="preview-pane"  data='{{pdfOutput}}' type="application/pdf" style="height:500px;width:1200px;"></object>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Congratulations</h4>
+      </div>
+      <div class="modal-body">
+        <p>You've correctly arranged the items in this activity in {{score.length - 1}} attempt(s).</p><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="container">
+  <div class="navbar-text navbar-right"><button class="btn btn-lg btn-info">Score: {{score[0]}}/{{exercise.sentences.length}}</button></div>
+    <div class="navbar-center navbar-brand"><a href='/' ng-show="score[0]==exercise.sentences.length"class="btn btn-lg btn-primary">Home</a> <button ng-hide="score[0]==exercise.sentences.length"ng-click="calculateAttempt()" class="btn btn-lg btn-success">Check Answer</button></div>
+    <div class="navbar-text navbar-left">
+    <button class="btn btn-lg btn-warning">Attempts: {{score.length - 1}}</button>
+    </div>
+  </div>
+</nav>
+<!-- <object id="preview-pane"  data='{{pdfOutput}}' type="application/pdf" style="height:500px;width:1200px;"></object> -->

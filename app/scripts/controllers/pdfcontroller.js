@@ -72,6 +72,14 @@ app.controller("AnnotationController", function($scope, $timeout) {
           comment: "Well written!",
           points: 2
         }
+      }),new NGAnnotation({
+        startIndex: 45,
+        endIndex: 60,
+        type: "pink",
+        data: {
+          comment: "Poorly written!",
+          points: -2
+        }
       })
     ]
   ];
@@ -108,7 +116,7 @@ app.controller("AnnotationController", function($scope, $timeout) {
       return annotations.map(function(annotation) {
         var arr;
         arr = [];
-        if ($scope.hasPoints(annotation.data.points) && $scope.hasComment(annotation.data.comment)) {
+        if ($scope.hasComment(annotation.data.comment)) {
           arr.push(annotation);
         }
         if (annotation.children && annotation.children.length) {

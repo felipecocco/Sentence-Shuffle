@@ -28,47 +28,119 @@
   cursor: move;
 }
 
+.btn-circle {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}
+
+
+.navbar-center
+{
+    position: absolute;
+    width: 100%;
+    left: 10px;
+    top: 0;
+    text-align: center;
+    margin: auto;
+  height:100%;
+}
+
 </style>
-<div class="row" style="padding-top: 80px">
-  <textarea id="mainTextPage" class="col-xs-5 col-xs-offset-1" contentEditable="true" ng-model="content" style="min-height:500px;margin-bottom:20px">
-  </textarea>
-  <div id="movingaround" class="col-xs-5" style="">
-    <div class="btn-group">
-            <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Element'">Paragraph</label>
-            <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Sentence'">Sentence</label>
-            <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Word'">Word</label>
-        </div>
-    <div ui-sortable ng-model="sortables" class="list" style="height:500px; overflow-y:scroll">
-      <div ng-Class="{longitem: radioModel!='Word', item: radioModel =='Word'}" ng-repeat="item in sortables">{{ item.text }}</div>
+ <link rel="stylesheet" href="styles/annotation-styles.css" />
+ {{annotations}}
+<div class="row" style="padding-top: 8vh; padding-bottom: 1vh">
+  <div class="col-xs-10 col-xs-offset-1">
+    <ul class="nav nav-pills nav-justified">
+      <li ng-Class="{active: stage == 0}"><a href="">1. Add Text</a></li>
+      <li ng-Class="{active: stage == 1}"><a href="">2. Add Hints</a></li>
+      <li ng-Class="{active: stage == 2}"><a href="">3. Review & Create</a></li>
+    </ul>
+  </div>
+</div>
+<div class="content1View" ng-show="stage == 0">
+  <div class="row" style="height:65vh">
+    <textarea id="mainTextPage" class="col-xs-5 col-xs-offset-1" contentEditable="true" ng-model="content" style="min-height:65vh;margin-bottom:2vh">
+    </textarea>
+    <div id="movingaround" class="col-xs-5" style="height:65vh">
+      <div class="btn-group">
+              <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Element'">Paragraph</label>
+              <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Sentence'">Sentence</label>
+              <!-- <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Word'">Word</label> -->
+          </div>
+      <div ui-sortable ng-model="sortables" class="list" style="height:90%; overflow-y:scroll">
+                  <div  ng-repeat="item in sortables">
+                <ng-annotate-text
+                  class="item"
+                  readonly="false"
+                  popup-controller="'AnnotationController'"
+                  popup-template-url="'views/annotations/annotation.html'"
+                  tooltip-controller="'AnnotationController'"
+                  tooltip-template-url="'views/annotations/annotation-tooltip.html'"
+                  annotations="annotations[item.order]"
+                  on-annotate="onAnnotate"
+                  on-annotate-error="onAnnotateError"
+                  on-popup-show="onPopupShow"
+                  text=" item.text">
+                </ng-annotate-text>
+          </div>
+      </div>
+    </div>
+  </div>
+    <div  id="final"class="col-xs-5" ng-show="false"ng-bind="processed">
+    </div>
+</div>
+<div class="content2View" ng-show="stage == 1">
+  <div class="row" style="height:65vh">
+    <div class="col-xs-5 col-xs-offset-1">
+      <div  ng-repeat="text in original">
+            <ng-annotate-text
+              class=""
+              readonly="false"
+              popup-controller="'AnnotationController'"
+              popup-template-url="'views/annotations/annotation.html'"
+              tooltip-controller="'AnnotationController'"
+              tooltip-template-url="'views/annotations/annotation-tooltip.html'"
+              annotations="annotations[$index]"
+              on-annotate="onAnnotate"
+              on-annotate-error="onAnnotateError"
+              on-popup-show="onPopupShow"
+              text="text">
+            </ng-annotate-text>
+      </div>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    <center><button id="saveButton" ng-click="updateDatabase()" class="btn btn-success btn-lg">Create Activity</button></center>
-  </div>
-</div>
-  <div  id="final"class="col-xs-5" ng-show="false"ng-bind="processed">
-  </div>
-
-</div>
-  <div class="example" ng-repeat="text in demoTexts">
-      <div class="example-source">
-        <h2>Example</h2>
-
-        <ng-annotate-text
-          class="example-source-text"
-          readonly="false"
-          popup-controller="'AnnotationController'"
-          popup-template-url="'views/annotations/annotation.html'"
-          tooltip-controller="'AnnotationController'"
-          tooltip-template-url="'views/annotations/annotation-tooltip.html'"
-          annotations="annotations[$index]"
-          on-annotate="onAnnotate"
-          on-annotate-error="onAnnotateError"
-          on-popup-show="onPopupShow"
-          text="text">
-        </ng-annotate-text>
+<div class="content3View" ng-show="stage == 2">
+  <div class="row" style="height:65vh">
+    <div id="movingaround" class="col-xs-5 col-xs-offset-1" style="height:65vh">
+      <div ui-sortable ng-model="sortables" class="list" style="height:90%; overflow-y:scroll">
+          <div  ng-repeat="item in sortables">
+                <ng-annotate-text
+                  class="item"
+                  readonly="false"
+                  popup-controller="'AnnotationController'"
+                  popup-template-url="'views/annotations/annotation.html'"
+                  tooltip-controller="'AnnotationController'"
+                  tooltip-template-url="'views/annotations/annotation-tooltip.html'"
+                  annotations="annotations[item.order]"
+                  on-annotate="onAnnotate"
+                  on-annotate-error="onAnnotateError"
+                  on-popup-show="onPopupShow"
+                  text="item.text">
+                </ng-annotate-text>
+          </div>
+        </div>
       </div>
-
-<br><br><br>{{annotations}}
+    </div>
+  </div>
+  <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="height:auto">
+    <div class="container">
+      <div class="navbar-center navbar-brand"><button ng-disabled="stage == 0" ng-click="transition(-1)" class="btn btn-lg btn-primary">Previous <i class="fa fa-arrow-left"></button></i> <button ng-show="stage < 2" ng-click="transition(1)"class="btn btn-lg btn-primary">Next <i class="fa fa-arrow-right"></i></button><button id="saveButton" ng-click="updateDatabase();" ng-show="stage == 2"class="btn btn-success btn-lg">Create Activity</button></div>
+      <div class="navbar-text navbar-right"><button  ng-click="transition(-1)" class="btn btn-lg btn-info"># Items: {{sortables.length}}</button></div>
+    </div>
+  </nav>
