@@ -11,6 +11,7 @@ var app = angular.module('frontendApp', [
   'ui.bootstrap'
 ]);
 app.config(function ($routeProvider, $locationProvider) {
+    Parse.initialize("nH0BiYugmVyCNDLHFYGBuPdUJyBLRAOMBH9DYYuw", "jHLNGNDIBFXlUak1aLhZCEnqBeq2vjUhnRQ9UusB");
     $routeProvider
       .when('/pdftest',{
         templateUrl:'views/pdftest.html',
