@@ -1,5 +1,17 @@
 'use strict';
 /*global app:true*/
+var loginRequired = function($location, $q, $rootScope) {  
+    var deferred = $q.defer();
+
+    if(!$rootScope.sessionUser) {
+        deferred.reject()
+        $location.path('/');
+    } else {
+        deferred.resolve()
+    }
+
+    return deferred.promise;
+}
 var app = angular.module('frontendApp', [
   'ngCookies',
   'ngResource',
@@ -23,7 +35,13 @@ app.config(function ($routeProvider, $locationProvider) {
       })
       .when('/create', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve:{loginRequired: loginRequired}
+      })
+      .when('/myExercises',{
+        templateUrl: '/views/myexercises.html',
+        controller: 'MyExercisesCtrl',
+        resolve:{loginRequired: loginRequired}
       })
       .when('/checkStep',{
         templateUrl: '/views/confirmation.html',
@@ -34,7 +52,10 @@ app.config(function ($routeProvider, $locationProvider) {
         controller: 'ExerciseCtrl'
       })
       .otherwise({
-        redirectTo: '/create'
+        redirectTo: '/'
       });
     // $locationProvider.html5Mode(true);
   });
+app.run(function ($rootScope){
+  $rootScope.sessionUser = Parse.User.current();
+});

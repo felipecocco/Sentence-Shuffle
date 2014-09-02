@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="/images/yeoman.png" style="height:30px; margin: -5px"> Word {{username}}</a>
+          <a class="navbar-brand" href="#"><img src="/images/yeoman.png" style="height:30px; margin: -5px"> Word Scrambler</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,7 +57,7 @@
               </ul>
             </li>
           </ul> -->
-          <form class="navbar-form navbar-right" role="search">
+          <form class="navbar-form navbar-right" role="search" ng-show="!sessionUser">
             <div class="form-group">
               <input type="text" ng-model="username"class="form-control" placeholder="username">
             </div>
@@ -65,9 +65,19 @@
               <input type="password" ng-model="password"class="form-control" placeholder="password">
             </div>
             <button ng-click="login()" class="btn btn-default">Login</button>
-            <button class="btn btn-primary">Sign Up</button>
+            <button ng-click="signup()"class="btn btn-primary">Sign Up</button>
           </form>
-
+          <ul class=" nav navbar-nav navbar-right" ng-show="sessionUser" style="padding-right:10px">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">My Exercises</a></li>
+                <li><a href="#">Profile</a></li>
+                <li class="divider"></li>
+                <li><a href="#" ng-click="logout()">Logout</a><li>
+              </li>
+            </li>
+          </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
@@ -119,6 +129,7 @@
         <script src="scripts/controllers/index.js"></script>
         <script src="scripts/controllers/pdfcontroller.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/controllers/myExercises.js"></script>
         <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
         <!-- endbuild -->
 </body>

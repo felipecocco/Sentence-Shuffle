@@ -1,12 +1,65 @@
 'use strict';
 /*global app:true*/
-app.factory('UserBackend', function ($q){
+app.factory('UserBackend', function ($q, $rootScope){
   var User = Parse.User.extend({
-
   },{
 
   });
-  return User;
+  var u;
+  return {
+    getExercises: function(){
+      var defer = $q.defer();
+      console.log('run');
+      var query = new Parse.Query("Exercise");
+      query.equalTo('owner',Parse.User.current());
+      query.find({
+        success: function(exercises){
+          console.log(exercises);
+          defer.resolve(exercises);
+        },
+        error: function(obj, error){
+          console.log(error);
+          defer.reject(error);
+        }
+      });
+      return defer.promise;
+    },
+    signUp: function(username, password){
+      console.log('signed');
+      var defer = $q.defer();
+      u = new User();
+      u.set('username',username);
+      u.set('password',password);
+      u.signUp(null, {
+        success:function(user){
+          $rootScope.sessionUser = u;
+          defer.resolve(user);
+        },
+        error: function(object, error){
+          console.log(error )
+          defer.reject(error);
+        }
+      });
+      return defer.promise;
+    },
+    login: function(username, password){
+      var defer = $q.defer();
+      Parse.User.logIn(username,password, {
+        success: function(user) {
+          $rootScope.sessionUser = user;
+          defer.resolve(user);
+        },
+        error: function(user, error) {
+          defer.reject(error);
+        }
+      });
+      return defer.promise;
+    },
+    logout: function(){
+      Parse.User.logOut();
+      $rootScope.sessionUser = Parse.User.current();
+    }
+  }
 });
 app.factory('ExerciseBackend', function ($q) {
  

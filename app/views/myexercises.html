@@ -1,0 +1,14 @@
+<br><br><br><br><br>
+<div class="container">
+	<div class="panel panel-primary" ng-repeat="exercise in exercises">
+		<div class="panel-heading">
+			{{exercise.title}}
+		</div>
+	  <div class="panel-body">
+	    <p ng-repeat="item in exercise.sentences">{{item.text}}</p>
+	  </div>
+	  <div class="panel-footer">
+	  	<button class="btn btn-primary">Start</button> <button class="btn btn-warning">Edit</button> created:{{exercise.createdAt | date:'medium'}}
+	  </div>
+	</div>
+</div>
