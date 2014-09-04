@@ -33,9 +33,14 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl:'views/principal.html',
         controller:'IndexCtrl'
       })
-      .when('/create', {
+      .when('/create/:exerciseKey?', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
+        resolve:{loginRequired: loginRequired}
+      })
+      .when('/live/:exerciseKey',{
+        templateUrl: '/views/liveview.html',
+        controller:'LiveCtrl',
         resolve:{loginRequired: loginRequired}
       })
       .when('/myExercises',{

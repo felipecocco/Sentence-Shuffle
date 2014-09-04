@@ -111,3 +111,59 @@ app.factory('ExerciseBackend', function ($q) {
  
     return Exercise;
   });
+app.factory('ExerciseAttempt', function ($q) {
+ 
+    var ExerciseAttempt = Parse.Object.extend("exerciseAttempt", {
+      initialize: function (attrs, options) {
+        }
+    }, {
+      // Class methods
+      get: function (id){
+        var defer = $q.defer();
+        var query = new Parse.Query(this);
+        query.get(id, {
+          success: function(item){
+            defer.resolve(item);
+          },
+          error: function(object,aError){
+            defer.reject(aError);
+          }
+      });
+      return defer.promise;
+    },
+      find: function(exercise_key){
+        var defer = $q.defer();
+        var query = new Parse.Query(this);
+        query.equalTo('exercise',exercise_key);
+        query.find({
+          success: function(results){
+          defer.resolve(results);
+        }, error: function(error){
+          console.log(error);
+          defer.resolve(error);
+        }
+      });
+        return defer.promise;
+
+  }
+});
+    // Title property
+    Object.defineProperty(ExerciseAttempt.prototype, "exercise", {
+      get: function() {
+        return this.get("exercise");
+      },
+      set: function(aValue) {
+        this.set("exercise", aValue);
+      }
+    });
+    Object.defineProperty(ExerciseAttempt.prototype, "order", {
+      get: function() {
+        return this.get("order");
+      },
+      set: function(aValue) {
+        this.set("order", aValue);
+      }
+    });
+ 
+    return ExerciseAttempt;
+  });

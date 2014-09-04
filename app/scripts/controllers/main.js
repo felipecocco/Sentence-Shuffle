@@ -1,14 +1,38 @@
 'use strict';
 /*global app:true*/
 /*global $:false */
-app.controller('MainCtrl', function ($scope, NGAnnotation, ExerciseBackend,$rootScope) {
+app.controller('MainCtrl', function ($scope,$routeParams, NGAnnotation, ExerciseBackend,$rootScope) {
   $scope.content='Insert your content here';
   $scope.stage = 0;
-  $scope.demoTexts = ["something this way comes", "The Stockholm School of Economics (SSE) or Handelshögskolan i Stockholm (HHS) is one of the leading European business schools. SSE is a private business school that receives most of its financing from private sources. SSE offers bachelors, masters and MBA programs, along with highly regarded PhD programs and extensive Executive Education (customized and open programs).\r\rSSE's Masters in Management program is ranked no. 18 worldwide by the Financial Times.[1] QS ranks SSE no.26 among universities in the field of economics worldwide\r\rSSE is accredited by EQUIS certifying that all of its main activities, teaching as well as research, are of the highest international standards. SSE is also the Swedish member institution of CEMS together with universities such as London School of Economics, Copenhagen Business School, Tsinghua University, Bocconi University, HEC Paris and the University of St. Gallen.\r\rSSE has founded sister organizations: SSE Riga in Riga, Latvia, and SSE Russia in St Petersburg, Russia. It also operates a research institute in Tokyo, Japan; the EIJS (European Institute of Japanese Studies)."];
   $scope.annotations = [];
   $scope.sortables = [];
   $scope.original = [];
+  $scope.radioModel = 'Element';
+  if($routeParams.exerciseKey)
+  {
+    console.log($routeParams.exerciseKey);
+    ExerciseBackend.get($routeParams.exerciseKey).then(function(obj){
+      var content = "";
+      for(var i = 0; i < obj.sentences.length; i++){
+        content += obj.sentences[i].text;
+        content += "\n";
+      }
+      $scope.content = content;
+      $scope.stage = 0;
+      $scope.kind = obj.kind;
+      $scope.activityTitle = obj.title;
+    });
+  }
+  else{
+    $scope.content='Insert your content here';
+    $scope.stage = 0;
+    $scope.annotations = [];
+    $scope.sortables = [];
+    $scope.original = [];
     $scope.radioModel = 'Element';
+
+  }
+  
     $scope.transition = function(dir){
       if($scope.stage === 1 && dir === -1){
         console.log('oops');
@@ -52,6 +76,7 @@ app.controller('MainCtrl', function ($scope, NGAnnotation, ExerciseBackend,$root
         $scope.sortables = [];
         $scope.original = [];
         if(creation != true){
+          console.log('2');
           $scope.annotations = [];
         }
         for(var i = 0; i < $scope.pieces.length; i++){

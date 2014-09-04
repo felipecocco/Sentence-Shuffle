@@ -100,6 +100,18 @@ app.controller('ExerciseCtrl',['$scope','$modal','$routeParams', 'ngAudio','$sce
   };
   $scope.calculateAttempt = function()
   {
+    if($scope.attempts == 0){
+      var exerciseAttempt = Parse.Object.extend("exerciseAttempt");
+      var exerciseAttempt = new exerciseAttempt();
+      var order = []; 
+      exerciseAttempt.set("exercise", $routeParams.exerciseKey);
+
+      for(var i = 0; i < $scope.exercise.sentences.length; i++){
+        order.push($scope.exercise.sentences[i].order);
+      }
+      exerciseAttempt.set("order", order);
+      exerciseAttempt.save();
+    }
     $scope.attempts += 1;
     var score = 0;
     for(var i = 0; i < $scope.exercise.sentences.length; i++)
