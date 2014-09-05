@@ -59,8 +59,15 @@ app.controller('LiveCtrl', function ($routeParams,$scope, $rootScope,UserBackend
 	$scope.results = [];
 	$scope.resultsArray = [];
 	$scope.build = [];
+	$scope.restart = function(){
+		console.log('deleted');
+		Parse.Object.destroyAll($scope.parseResults);
+		console.log($scope.parseResults);
+
+	}
 	ExerciseBackend.get($routeParams.exerciseKey).then(function(obj){
 	  $scope.notelength = obj.annotations.length;
+	  $scope.exercise.id = obj.id;
 	  $scope.exercise.notes = [];
 	  $scope.exercise.title = obj.title;
 	  $scope.exercise.kind = obj.kind;
@@ -82,6 +89,7 @@ app.controller('LiveCtrl', function ($routeParams,$scope, $rootScope,UserBackend
 	  }
 	  $scope.exercise.annotations = $scope.exercise.notes;
 	  ExerciseAttempt.find($routeParams.exerciseKey).then(function(results){
+	  	$scope.parseResults = results;
 	  	$scope.results = [];
 	  	$scope.resultsArray = [];
 	  	for(var i = 0; i <= results[0].order.length; i++){

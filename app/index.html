@@ -57,7 +57,7 @@
               </ul>
             </li>
           </ul> -->
-          <form class="navbar-form navbar-right" role="search" ng-show="!sessionUser">
+          <form ng-cloak class="navbar-form navbar-right" role="search" ng-show="!sessionUser">
             <div class="form-group">
               <input type="text" ng-model="username"class="form-control" placeholder="username">
             </div>
@@ -72,7 +72,6 @@
               <a href="#" class="dropdown-toggle" >Profile<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#/myExercises">My Exercises</a></li>
-                <li><a href="#">Profile</a></li>
                 <li class="divider"></li>
                 <li><a href="#" ng-click="logout()">Logout</a><li>
               </li>

@@ -8,7 +8,7 @@
 	    <p ng-repeat="item in exercise.sentences">{{item.text}}</p>
 	  </div>
 	  <div class="panel-footer">
-	  	<a ng-href="#/exercise/{{exercise.id}}"class="btn btn-primary">Start</a> <a ng-href="#/create/{{exercise.id}}" class="btn btn-warning">Remix</a> <a class="btn btn-danger">Delete</a> created:{{exercise.createdAt | date:'medium'}}
+	  	<a ng-href="#/exercise/{{exercise.id}}"class="btn btn-primary">View</a> <a ng-href="#/live/{{exercise.id}}" class="btn btn-success">Live</a> <a ng-href="#/create/{{exercise.id}}" class="btn btn-warning">Remix</a> <a class="btn btn-danger">Delete</a> created:{{exercise.createdAt | date:'medium'}}
 	  </div>
 	</div>
 </div>

@@ -38,7 +38,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 page-header">
-			<h1>Summary statistics for the activity</h1> 
+			<h1>Summary statistics for the activity <a target="_blank" ng-href="#/exercise/{{exercise.id}}" class="btn btn-primary">View Activity</a> <button class="btn btn-warning" ng-click="restart()">Restart Activity</button></h1>
 		</div>
 	</div>
 
@@ -49,16 +49,22 @@
 		</div>
 	
 		<div class="col-xs-6">
-			<p> Number of First Attempts: {{results.length}}</p>
-			<p> Number of Successful finishes: {{results.length}}</p>
-			<p> Median number of tries to finish: {{results.length}}</p>
+			<div class="jumbotron">
+			  <h2>Number of First Tries: <span class="label label-default">{{results.length}}</span></h2>
+			  <h2>Completed Assignments: <span class="label label-default">{{results.length}}</span></h2>
+			  <h2>Average Time to Completion: <span class="label label-default">{{results.length}}</span></h2>
+			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12 page-header">
-			<h1>Detailed Result Breakdown</h1> 
+			<h1>Detailed Result Breakdown {{}}{{count}}</h1> 
 		</div>
 						<div ng-repeat="solution in build" class="col-xs-12">
+						<div class="jumbotron col-xs-6">
+						  <h1>Number of Students:</h1>
+						  <p><h1><span class="label label-default">{{count[1][$index]}}</span></h1></p>
+						</div>
 					<div  class="list col-xs-6" style="height:90%; overflow-y:scroll">
 			        <div  ng-repeat="item in solution">
 			              <ng-annotate-text
@@ -76,9 +82,9 @@
 			              </ng-annotate-text>
 			        </div>
 			      </div>
-			      <div> Number: {{count[1][$index]}}</div></div>
+
+			   </div>
 
 	</div>
 </div>
-{{build}}
 </html>
