@@ -1,4 +1,4 @@
-app.controller('LiveCtrl', function ($routeParams,$scope, $rootScope,UserBackend,ExerciseBackend, ExerciseAttempt, NGAnnotation){
+app.controller('LiveCtrl',['$routeParams','$scope','$rootScope','UserBackend','ExerciseBackend','ExerciseAttempt','NGAnnotation', function ($routeParams,$scope, $rootScope,UserBackend,ExerciseBackend, ExerciseAttempt, NGAnnotation){
 	Array.prototype.equals = function (array) {
     // if the other array is a falsy value, return
     if (!array)
@@ -122,7 +122,7 @@ app.controller('LiveCtrl', function ($routeParams,$scope, $rootScope,UserBackend
 
 	  	var fill = d3.scale.ordinal()
 	  	    .domain(d3.range(6))
-	  	    .range(["#000000", "#FFDD89", "#957244", "#F26223", "#00FF00", "#FF0000", "#0000FF"]);
+	  	    .range(["#a457aa","#3eda7f","#afc619", "#FFDD89", "#957244", "#F26223", "#00FF00", "#FF0000", "#0000FF"]);
 
 	  	var svg = d3.select("#chart").append("svg")
 	  	    .attr("width", width)
@@ -202,4 +202,4 @@ app.controller('LiveCtrl', function ($routeParams,$scope, $rootScope,UserBackend
 	
 
 
-});
+}]);

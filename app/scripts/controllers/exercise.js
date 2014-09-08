@@ -101,6 +101,7 @@ app.controller('ExerciseCtrl',['$scope','$modal','$routeParams', 'ngAudio','$sce
   $scope.calculateAttempt = function()
   {
     if($scope.attempts == 0){
+      $scope.firstAttempt = $scope.exercise.sentences;
       var exerciseAttempt = Parse.Object.extend("exerciseAttempt");
       var exerciseAttempt = new exerciseAttempt();
       var order = []; 

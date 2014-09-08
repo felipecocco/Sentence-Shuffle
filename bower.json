@@ -20,7 +20,8 @@
     "underscore": "~1.6.0",
     "jspdf": "/Users/felipecocco/Documents/workspace/GAP Projects/Version-Control/paragraphscrambler/frontend/app/jsPDF/jspdf.js",
     "main.min": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/gh-pages/dist/main.min.js",
-    "ng-annotate-text-latest": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/master/dist/ng-annotate-text-latest.js"
+    "ng-annotate-text-latest": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/master/dist/ng-annotate-text-latest.js",
+    "angular-loading-bar": "~0.5.2"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

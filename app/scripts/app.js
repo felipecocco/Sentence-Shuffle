@@ -14,6 +14,7 @@ var loginRequired = function($location, $q, $rootScope) {
 }
 var app = angular.module('frontendApp', [
   'ngCookies',
+  'angular-loading-bar',
   'ngResource',
   'ngAudio',
   'ngAnnotateText',
@@ -22,7 +23,8 @@ var app = angular.module('frontendApp', [
   'ui.sortable',
   'ui.bootstrap'
 ]);
-app.config(function ($routeProvider, $locationProvider) {
+app.config(function (cfpLoadingBarProvider, $routeProvider, $locationProvider) {
+    cfpLoadingBarProvider.latencyThreshold = 10;
     Parse.initialize("nH0BiYugmVyCNDLHFYGBuPdUJyBLRAOMBH9DYYuw", "jHLNGNDIBFXlUak1aLhZCEnqBeq2vjUhnRQ9UusB");
     $routeProvider
       .when('/pdftest',{

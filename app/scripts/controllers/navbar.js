@@ -1,6 +1,6 @@
 'use strict';
 /*global app:true*/
-app.controller('NavbarCtrl',function ($scope, $rootScope, UserBackend){
+app.controller('NavbarCtrl',['$scope','$rootScope','UserBackend', function ($scope, $rootScope, UserBackend){
 	$scope.login = function(){
 		UserBackend.login($scope.username,$scope.password).then(function(obj){
 			console.log(obj);
@@ -29,4 +29,4 @@ app.controller('NavbarCtrl',function ($scope, $rootScope, UserBackend){
 		UserBackend.logout();
 	}
 
-});
+}]);

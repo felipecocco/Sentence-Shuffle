@@ -108,6 +108,14 @@ app.factory('ExerciseBackend', function ($q) {
         this.set("sentences", aValue);
       }
     });
+    Object.defineProperty(Exercise.prototype, "description", {
+      get: function() {
+        return this.get("description");
+      },
+      set: function(aValue) {
+        this.set("description", aValue);
+      }
+    });
  
     return Exercise;
   });

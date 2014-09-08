@@ -1,7 +1,7 @@
 'use strict';
 /*global app:true*/
 /*global $:false */
-app.controller('MainCtrl', function ($scope,$routeParams, NGAnnotation, ExerciseBackend,$rootScope) {
+app.controller('MainCtrl',['$scope','$routeParams','NGAnnotation','ExerciseBackend','$rootScope', function ($scope,$routeParams, NGAnnotation, ExerciseBackend,$rootScope) {
   $scope.content='Insert your content here';
   $scope.stage = 0;
   $scope.annotations = [];
@@ -54,6 +54,7 @@ app.controller('MainCtrl', function ($scope,$routeParams, NGAnnotation, Exercise
       else{
         testObject.set("kind",$scope.radioModel);
       }
+      testObject.set("description",$scope.activityDescription);
       testObject.set("sentences",$scope.sortables);
       testObject.set("annotations",$scope.annotations);
       testObject.set("owner",$rootScope.sessionUser);
@@ -155,10 +156,5 @@ app.controller('MainCtrl', function ($scope,$routeParams, NGAnnotation, Exercise
     return $scope.clearPopups = function() {
       return $scope.$broadcast("ngAnnotateText.clearPopups");
     };
-  });
+  }]);
 
-
-app.factory('Backend', function ($resource){
-  return $resource('http://felipecocco.appspot.com/api/exercise/:key');
-
-});

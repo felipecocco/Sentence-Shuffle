@@ -28,8 +28,12 @@
   font-weight: bold;
   cursor: move;
 }
+@media screen and (min-width: 768px) {
+  
+  #myModal .modal-dialog  {width:900px;}
 
-
+}
+#myModal4 .modal-dialog  {width:75%;}
 .navbar-center
 {
     position: absolute;
@@ -48,7 +52,7 @@
 	<div class="row">	
 		<div class="col-xs-8 col-xs-offset-1">
 			<div class="page-header">
-				<h1>{{exercise.title}} <button ng-click="downloadWorksheet()" class="btn btn-warning">Download Worksheet</button></h1> 
+				<h1>{{exercise.title}} <!-- <button ng-click="downloadWorksheet()" class="btn btn-warning">Download Worksheet</button> --></h1> 
 			</div>
 		</div>
 	</div>
@@ -77,15 +81,51 @@
 <!-- Button trigger modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" size="lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Congratulations</h4>
+        <h4 class="modal-title" id="myModalLabel">Exercise Summary - Number of needed attempts: <span class="label label-default">{{attempts}}</span></h4>
       </div>
       <div class="modal-body">
-        <p>You've correctly arranged the items in this activity in {{score.length - 1}} attempt(s).</p><br>
+        <div class="row">
+          <div class="col-xs-6">
+            <div  ng-repeat="item in firstAttempt">
+                  <ng-annotate-text
+                    class=""
+                    readonly="true"
+                    popup-controller="'AnnotationController'"
+                    popup-template-url=""
+                    tooltip-controller="'AnnotationController'"
+                    tooltip-template-url="'views/annotations/annotation-tooltip.html'"
+                    annotations="exercise.annotations[item.order]"
+                    on-annotate="onAnnotate"
+                    on-annotate-error="onAnnotateError"
+                    on-popup-show="onPopupShow"
+                    text="item.text">
+                  </ng-annotate-text>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div  ng-repeat="item in exercise.sentences">
+                  <ng-annotate-text
+                    class=""
+                    readonly="true"
+                    popup-controller="'AnnotationController'"
+                    popup-template-url=""
+                    tooltip-controller="'AnnotationController'"
+                    tooltip-template-url="'views/annotations/annotation-tooltip.html'"
+                    annotations="exercise.annotations[item.order]"
+                    on-annotate="onAnnotate"
+                    on-annotate-error="onAnnotateError"
+                    on-popup-show="onPopupShow"
+                    text="item.text">
+                  </ng-annotate-text>
+            </div>
+          </div>
+        </div>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

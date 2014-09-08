@@ -98,8 +98,10 @@
     <div class="col-xs-5 col-xs-offset-1">
       <form role="form">
         <div class="form-group">
-          <label for="exampleInputEmail1">Activity Title</label>
+          <label for="activityTitle">Activity Title</label>
           <input type="text" class="form-control" ng-model="activityTitle" id="activityTitle" placeholder="">
+          <label for="activityDescription">Description</label>
+          <textarea type="text" class="form-control" ng-model="activityDescription" id="activityDescription" placeholder="Insert your content here..." style="height:200px"></textarea>
           {{notes}}
         </div>
       </form>

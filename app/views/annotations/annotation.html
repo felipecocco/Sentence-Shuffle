@@ -1,5 +1,5 @@
 <div class="ng-annotate-text-popup-group">
-	<label class="ng-annotate-text-popup-label" for="ng-annotate-text-edit-comment">Comment</label>
+	<label class="ng-annotate-text-popup-label" for="ng-annotate-text-edit-comment">Hint:</label>
 	<textarea
 			id="ng-annotate-text-edit-comment"
 			class="ng-annotate-text-popup-field"
@@ -8,7 +8,7 @@
 	</textarea>
 </div>
 
-<div class="ng-annotate-text-popup-group ng-annotate-text-popup-points">
+<!-- <div class="ng-annotate-text-popup-group ng-annotate-text-popup-points">
 	<label class="ng-annotate-text-popup-label ng-annotate-text-popup-points-label" ng-if="!$readonly" for="ng-annotate-text-edit-points">Points</label>
 	<input
 			id="ng-annotate-text-edit-points"
@@ -16,7 +16,7 @@
 			class="ng-annotate-text-popup-field ng-annotate-text-popup-points-field"
 			ng-model="$annotation.data.points"
 			ng-disabled="$readonly" />
-</div>
+</div> -->
 
 <div class="ng-annotate-text-popup-group" ng-if="!$readonly">
 	<div class="ng-annotate-text-popup-label">Color</div>
@@ -36,7 +36,7 @@
 	</ul>
 </div>
 
-<div class="ng-annotate-text-popup-group" ng-if="!$readonly">
+<!-- <div class="ng-annotate-text-popup-group" ng-if="!$readonly">
 	<div class="ng-annotate-text-popup-label">Predefined</div>
 	<ul class="ng-annotate-text-popup-templates">
 		<li ng-repeat="template in templates">
@@ -49,7 +49,7 @@
 			</button>
 		</li>
 	</ul>
-</div>
+</div> -->
 
 <div class="ng-annotate-text-popup-actions" ng-if="!$readonly">
 	<button class="ng-annotate-text-btn ng-annotate-text-btn-save" ng-click="close()">Save</button>

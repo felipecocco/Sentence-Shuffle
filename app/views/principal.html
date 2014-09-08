@@ -31,22 +31,31 @@ $(window).scroll(function(e){
 </div>
 <div class="jumbotron jb">
   <div class="container" style="padding-top:50px">
-	  <h1>Welcome to Paragraph Scrambler!</h1>
+	  <h1>Welcome to Word Scrambler!</h1>
 	  <p>Click below to get create your own word scrambling activity. You can then have your students do their task on the computer or you can choose to use our printable worksheet!</p>
 	  <p><a class="btn btn-primary btn-lg" role="button" ng-href="#/create">Get started!</a></p>
   </div>
 </div>
-  <div class="container">
+  <div class="container-fluid">
     <div class="col-xs-12">
     	<div class="page-header">
     	  <center><h1>Checkout some activities</h1></center>
     </div>
-
-    <div class="media" ng-repeat="item in recent">
-    <div class="media-body">
-      <h4><a href="#/exercise/{{item.id}}">{{item.title}}</a></h4>
-      Aqui deve vir alguma descrição do texto da atividade <span class="label" ng-class="{'label-primary': item.kind == 'Sentence', 'label-warning': item.kind == 'Paragraph'}">{{item.kind}}</span>
     </div>
+    <div class="row">
+    <div class="col-xs-4" ng-repeat="item in recent">
+  <div class="panel panel-primary" >
+    <div class="panel-heading">
+      {{item.title}}
+    </div>
+    <div class="panel-body">
+      <p>{{item.description}}</p>
+    </div>
+    <div class="panel-footer">
+      <a ng-href="#/exercise/{{item.id}}"class="btn btn-primary">View</a>  <a ng-href="#/create/{{item.id}}" class="btn btn-warning">Remix</a>  {{item.createdAt | date:'longDate'}}
+    </div>
+  </div>
+  </div>
   </div>
 </div>
 </div>
