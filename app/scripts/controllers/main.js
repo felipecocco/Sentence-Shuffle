@@ -21,6 +21,7 @@ app.controller('MainCtrl',['$scope','$routeParams','NGAnnotation','ExerciseBacke
       $scope.stage = 0;
       $scope.kind = obj.kind;
       $scope.activityTitle = obj.title;
+      $scope.activityDescription = obj.description;
     });
   }
   else{

@@ -10,10 +10,10 @@
   margin: 5px 0;
   border: 2px solid #444;
   border-radius: 5px;
-  background-color: #EA8A8A;
+  background-color: #E7E7E7;
 
   font-size: 1.1em;
-  font-weight: bold;
+  font-weight: ;
   cursor: move;
 }
 .item{
@@ -22,10 +22,10 @@
   border: 1px solid #444;
   border-radius: 4px;
   display: inline-block;
-  background-color: #EA8A8A;
+  background-color: #E7E7E7;
 
   font-size: 1.1em;
-  font-weight: bold;
+  font-weight: ;
   cursor: move;
 }
 @media screen and (min-width: 768px) {
@@ -91,6 +91,9 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-xs-6">
+            <div class="page-header">
+              <h3>First Attempt</h3> 
+            </div>
             <div  ng-repeat="item in firstAttempt">
                   <ng-annotate-text
                     class=""
@@ -106,6 +109,9 @@
                     text="item.text">
                   </ng-annotate-text>
             </div>
+          </div>
+          <div class="page-header">
+            <h3>Correct Order</h3> 
           </div>
           <div class="col-xs-6">
             <div  ng-repeat="item in exercise.sentences">
@@ -135,10 +141,10 @@
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
   <div class="container">
-  <div class="navbar-text navbar-right"><button class="btn btn-lg btn-info">Score: {{score[0]}}/{{exercise.sentences.length}}</button></div>
-    <div class="navbar-center navbar-brand"><a href='/' ng-show="score[0]==exercise.sentences.length"class="btn btn-lg btn-primary">Home</a> <button ng-hide="score[0]==exercise.sentences.length"ng-click="calculateAttempt()" class="btn btn-lg btn-success">Check Answer</button></div>
+  <div class="navbar-text navbar-right"></div>
+    <div class="navbar-center navbar-brand"><a href='/' ng-show="score[0]==exercise.sentences.length"class="btn btn-lg btn-primary">Home</a> <button ng-hide="score[0]==exercise.sentences.length"ng-click="calculateAttempt()" class="btn btn-lg btn-success">Check Answer</button> <button class="btn btn-lg btn-info">Score: {{score[0]}}/{{exercise.sentences.length}}</button></div>
     <div class="navbar-text navbar-left">
-    <button class="btn btn-lg btn-warning">Attempts: {{score.length - 1}}</button>
+    <button class="btn btn-lg btn-warning hidden-xs">Attempts: {{score.length - 1}}</button>
     </div>
   </div>
 </nav>

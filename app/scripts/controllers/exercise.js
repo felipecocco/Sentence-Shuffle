@@ -25,27 +25,13 @@ app.controller('ExerciseCtrl',['$scope','$modal','$routeParams', 'ngAudio','$sce
   $scope.attempts = 0;
   ExerciseBackend.get($routeParams.exerciseKey).then(function(obj){
     console.log(obj);
+    $scope.obj = obj
     $scope.notelength = obj.annotations.length;
     $scope.exercise.notes = [];
     $scope.exercise.title = obj.title;
     $scope.exercise.kind = obj.kind;
     $scope.exercise.sentences = shuffle(obj.sentences);
-    for (var item = 0; item < obj.annotations.length; item++){
-      var itemNotes = [];
-      for (var notes = 0; notes <obj.annotations[item].length; notes++){
-        var thisNote = obj.annotations[item][notes];
-        itemNotes.push(new NGAnnotation({
-          startIndex: thisNote.startIndex,
-          endIndex: thisNote.endIndex,
-          type: thisNote.type,
-          data: {
-            comment: thisNote.data.comment
-          }
-          }));
-      }
-      $scope.exercise.notes.push(itemNotes);
-    }
-    $scope.exercise.annotations = $scope.exercise.notes;
+    
   });
   // Backend.get({key:$routeParams.exerciseKey}, function(obj){
   //   console.log(obj);
@@ -101,7 +87,23 @@ app.controller('ExerciseCtrl',['$scope','$modal','$routeParams', 'ngAudio','$sce
   $scope.calculateAttempt = function()
   {
     if($scope.attempts == 0){
-      $scope.firstAttempt = $scope.exercise.sentences;
+      for (var item = 0; item < $scope.obj.annotations.length; item++){
+        var itemNotes = [];
+        for (var notes = 0; notes <$scope.obj.annotations[item].length; notes++){
+          var thisNote = $scope.obj.annotations[item][notes];
+          itemNotes.push(new NGAnnotation({
+            startIndex: thisNote.startIndex,
+            endIndex: thisNote.endIndex,
+            type: thisNote.type,
+            data: {
+              comment: thisNote.data.comment
+            }
+            }));
+        }
+        $scope.exercise.notes.push(itemNotes);
+      }
+      $scope.exercise.annotations = $scope.exercise.notes;
+      $scope.firstAttempt = angular.copy($scope.exercise.sentences);
       var exerciseAttempt = Parse.Object.extend("exerciseAttempt");
       var exerciseAttempt = new exerciseAttempt();
       var order = []; 
