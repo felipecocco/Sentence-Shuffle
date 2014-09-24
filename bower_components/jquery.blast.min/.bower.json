@@ -1,0 +1,13 @@
+{
+  "name": "jquery.blast.min",
+  "_cacheHeaders": {
+    "ETag": "\"bd885d41c2b591891d2acc8d7dc40828166e54ed\"",
+    "Content-Length": "5058",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:bd885d41c",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/julianshapiro/blast/master/jquery.blast.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/julianshapiro/blast/master/jquery.blast.min.js"
+}

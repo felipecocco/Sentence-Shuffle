@@ -1,0 +1,44 @@
+<style>.list {
+  list-style: none outside none;
+  margin: 10px 0 30px;
+}
+.longitem {
+  width: 100%;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border: 2px solid #444;
+  border-radius: 5px;
+  background-color: #E7E7E7;
+
+  font-size: 1.1em;
+  font-weight: ;
+  cursor: move;
+}
+.item{
+  padding: 4px 10px;
+  margin: 4px 0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  display: inline-block;
+  background-color: #E7E7E7;
+
+  font-size: 1.1em;
+  font-weight: ;
+  cursor: move;
+}
+@media screen and (min-width: 768px) {
+  
+  #myModal .modal-dialog  {width:900px;}
+
+}
+#myModal4 .modal-dialog  {width:75%;}
+.navbar-center
+{
+    position: absolute;
+    width: 100%;
+    left: 10px;
+    top: 0;
+    text-align: center;
+    margin: auto;
+  height:100%;
+}</style><link rel="stylesheet" href="styles/annotation-styles.css"><div class="container-fluid" style="padding-top: 0px"><div class="row"><div class="col-xs-8 col-xs-offset-1"><div class="page-header"><h1>{{exercise.title}} <button ng-click="downloadWorksheet()" class="btn btn-warning">Download Worksheet</button></h1></div></div></div><div class="row" style="padding-bottom:10vh"><div class="col-xs-10 col-xs-offset-1"><div ui-sortable="" ng-model="exercise.sentences" class="list" style="height:90%; overflow-y:scroll"><div ng-repeat="item in exercise.sentences"><ng-annotate-text class="item" readonly popup-controller="'AnnotationController'" popup-template-url="" tooltip-controller="'AnnotationController'" tooltip-template-url="'views/annotations/annotation-tooltip.html'" annotations="exercise.annotations[item.order]" on-annotate="onAnnotate" on-annotate-error="onAnnotateError" on-popup-show="onPopupShow" text="item.text"></ng-annotate-text></div></div></div></div></div><!-- Button trigger modal --><!-- Modal --><div class="modal fade" size="lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title" id="myModalLabel">Exercise Summary - Number of needed attempts: <span class="label label-default">{{attempts}}</span></h4></div><div class="modal-body"><div class="row"><div class="col-xs-6"><div class="page-header"><h3>First Attempt</h3></div><div ng-repeat="item in firstAttempt"><ng-annotate-text class="" readonly popup-controller="'AnnotationController'" popup-template-url="" tooltip-controller="'AnnotationController'" tooltip-template-url="'views/annotations/annotation-tooltip.html'" annotations="exercise.annotations[item.order]" on-annotate="onAnnotate" on-annotate-error="onAnnotateError" on-popup-show="onPopupShow" text="item.text"></ng-annotate-text></div></div><div class="page-header"><h3>Correct Order</h3></div><div class="col-xs-6"><div ng-repeat="item in exercise.sentences"><ng-annotate-text class="" readonly popup-controller="'AnnotationController'" popup-template-url="" tooltip-controller="'AnnotationController'" tooltip-template-url="'views/annotations/annotation-tooltip.html'" annotations="exercise.annotations[item.order]" on-annotate="onAnnotate" on-annotate-error="onAnnotateError" on-popup-show="onPopupShow" text="item.text"></ng-annotate-text></div></div></div></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div><nav class="navbar navbar-default navbar-fixed-bottom" role="navigation"><div class="container"><div class="navbar-text navbar-right"></div><div class="navbar-center navbar-brand"><a href="/" ng-show="score[0]==exercise.sentences.length" class="btn btn-lg btn-primary">Home</a> <button ng-hide="score[0]==exercise.sentences.length" ng-click="calculateAttempt()" class="btn btn-lg btn-success">Check Answer</button> <button class="btn btn-lg btn-info">Score: {{score[0]}}/{{exercise.sentences.length}}</button></div><div class="navbar-text navbar-left"><button class="btn btn-lg btn-warning hidden-xs">Attempts: {{score.length - 1}}</button></div></div></nav><!-- <object id="preview-pane"  data='{{pdfOutput}}' type="application/pdf" style="height:500px;width:1200px;"></object> -->

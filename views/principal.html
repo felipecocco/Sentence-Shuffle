@@ -1,0 +1,24 @@
+<script>var jumboHeight = $('.jumbotron').outerHeight();
+function parallax(){
+    var scrolled = $(window).scrollTop();
+    $('.bg').css('height', (jumboHeight-scrolled) + 'px');
+}
+
+$(window).scroll(function(e){
+    parallax();
+});</script><style>.bg {
+  background: url('/images/2d5fbac8.word-scramble.jpg') no-repeat center center;
+  position: fixed;
+  width: 100%;
+  height: 400px; /*same height as jumbotron */
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+.jb {
+  height: 400px;
+  color: white;
+  text-shadow: #444 0 1px 1px;
+  background:transparent;
+}</style><div class="bg"></div><div class="jumbotron jb"><div class="container" style="padding-top:50px"><h1>Welcome to Sentence Shuffle!</h1><p>Click below to create your own text shuffling activity. Your students can do their task online or use our printable worksheet!</p><p><a class="btn btn-primary btn-lg" role="button" ng-href="#/create">Get started!</a></p></div></div><div class="container-fluid"><div class="col-md-12"><div class="page-header"><center><h1>How it works</h1></center></div></div><div class="row"><div class="col-xs-6 col-xs-offset-3"><div class="device-mockup macbook landscape black"><div class="device"><div class="screen"><style>.embed-container { position: relative; padding-bottom: 66.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class="embed-container"><iframe src="https://www.youtube.com/embed/V1s9oC5ebFs?modestbranding=1&rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe></div></div><div class="button"><!-- You can hook the "home button" to some JavaScript events or just remove it --></div></div></div></div></div><div class="footer"><div class="container"><center><p class="text-muted">Created by @felipecocco</p></center></div></div></div>

@@ -1,0 +1,13 @@
+{
+  "name": "sortable",
+  "_cacheHeaders": {
+    "ETag": "\"d293eb8f81a663ec1919d9190c2eda4a4d4738f9\"",
+    "Content-Length": "10364",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:d293eb8f8",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/angular-ui/ui-sortable/master/src/sortable.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/angular-ui/ui-sortable/master/src/sortable.js"
+}

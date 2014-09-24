@@ -1,0 +1,14 @@
+{
+  "name": "angular-animate-stylers",
+  "_cacheHeaders": {
+    "ETag": "\"a36846d28ddbdc2ec7fcaa9b30f3e9cbbfa3425a\"",
+    "Content-Length": "4364",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:a36846d28",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/angular/material/master/config/lib/angular-animate-sequence/angular-animate-stylers.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/angular/material/master/config/lib/angular-animate-sequence/angular-animate-stylers.js",
+  "_direct": true
+}

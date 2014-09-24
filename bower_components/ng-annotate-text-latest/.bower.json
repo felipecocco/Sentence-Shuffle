@@ -1,0 +1,14 @@
+{
+  "name": "ng-annotate-text-latest",
+  "_cacheHeaders": {
+    "ETag": "\"c6bd5249bd5d9c3a05e5604337e30ffab77546c1\"",
+    "Content-Length": "19811",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:c6bd5249b",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/master/dist/ng-annotate-text-latest.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/master/dist/ng-annotate-text-latest.js",
+  "_direct": true
+}

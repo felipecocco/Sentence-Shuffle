@@ -1,0 +1,14 @@
+{
+  "name": "FileSaver",
+  "_cacheHeaders": {
+    "ETag": "\"1095873014f48647bea070c6ce8287c1abac5612\"",
+    "Content-Length": "7520",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:109587301",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.js",
+  "_direct": true
+}

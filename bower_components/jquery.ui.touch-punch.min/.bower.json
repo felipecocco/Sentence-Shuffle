@@ -1,0 +1,14 @@
+{
+  "name": "jquery.ui.touch-punch.min",
+  "_cacheHeaders": {
+    "ETag": "\"31272ce6fd9f74cadc6d327da4e39fa23991fd44\"",
+    "Content-Length": "1291",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:31272ce6f",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js",
+  "_direct": true
+}

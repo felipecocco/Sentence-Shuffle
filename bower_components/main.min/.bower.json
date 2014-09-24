@@ -1,0 +1,13 @@
+{
+  "name": "main.min",
+  "_cacheHeaders": {
+    "ETag": "\"b0d55e0860cfe2814c9bbd47d5519cfeae53783b\"",
+    "Content-Length": "3510",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:b0d55e086",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/gh-pages/dist/main.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/gh-pages/dist/main.min.js"
+}
