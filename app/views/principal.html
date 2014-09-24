@@ -31,31 +31,34 @@ $(window).scroll(function(e){
 </div>
 <div class="jumbotron jb">
   <div class="container" style="padding-top:50px">
-	  <h1>Welcome to Word Scrambler!</h1>
-	  <p>Click below to get create your own word scrambling activity. You can then have your students do their task on the computer or you can choose to use our printable worksheet!</p>
+	  <h1>Welcome to Sentence Shuffle!</h1>
+	  <p>Click below to create your own text shuffling activity. Your students can do their task online or use our printable worksheet!</p>
 	  <p><a class="btn btn-primary btn-lg" role="button" ng-href="#/create">Get started!</a></p>
   </div>
 </div>
   <div class="container-fluid">
     <div class="col-md-12">
     	<div class="page-header">
-    	  <center><h1>Checkout some activities</h1></center>
+    	  <center><h1>How it works</h1></center>
     </div>
     </div>
     <div class="row">
-    <div class="col-md-4" ng-repeat="item in recent">
-  <div class="panel panel-primary" >
-    <div class="panel-heading">
-      {{item.title}}
-    </div>
-    <div class="panel-body">
-      <p>{{item.description}}</p>
-    </div>
-    <div class="panel-footer">
-      <a ng-href="#/exercise/{{item.id}}"class="btn btn-primary">View</a>  <a ng-href="#/create/{{item.id}}" class="btn btn-warning">Remix</a>  {{item.createdAt | date:'longDate'}}
+    <div class="col-xs-6 col-xs-offset-3">
+    <div class="device-mockup macbook landscape black">
+        <div class="device">
+            <div class="screen">
+               <style>.embed-container { position: relative; padding-bottom: 66.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/V1s9oC5ebFs?modestbranding=1&rel=0&showinfo=0' frameborder='0' allowfullscreen></iframe></div>
+            </div>
+            <div class="button">
+                <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+            </div>
+        </div>
     </div>
   </div>
-  </div>
+</div>
+<div class="footer">
+  <div class="container">
+    <center><p class="text-muted"> Created by @felipecocco</p></center>
   </div>
 </div>
 </div>

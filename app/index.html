@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Word Scrambler Beta</title>
+    <title>Sentence Shuffle Beta</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -19,6 +19,10 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/annotation-styles.css">
+    <link rel="stylesheet" href="styles/animate.min.css">
+    <link rel="stylesheet" href="styles/igrowl.min.css">
+    <link rel="stylesheet" href="styles/feather.css">
+    <link rel="stylesheet" href="styles/device-mockups.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- endbuild -->
   </head>
@@ -38,11 +42,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="/images/logo_colegio.jpg" style="height:30px; margin: 0px"> Word Scrambler</a>
+          <a class="navbar-brand" href="#">Sentence Shuffle <code>beta</code></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div ng-cloak class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <!--  <ul class="nav navbar-nav">
             <li class="active"><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
@@ -59,18 +63,20 @@
               </ul>
             </li>
           </ul> -->
-          <form ng-cloak class="navbar-form navbar-right" role="search" ng-show="!sessionUser">
+
+          <form  class="navbar-form navbar-right" role="search" ng-show="!sessionUser">
             <div class="form-group">
-              <input type="text" ng-model="username"class="form-control" placeholder="username">
+              <input type="text" ng-model="username"class="form-control" placeholder="Email">
             </div>
             <div class="form-group">
-              <input type="password" ng-model="password"class="form-control" placeholder="password">
+              <input type="password" ng-model="password"class="form-control" placeholder="Password">
             </div>
             <button ng-click="login()" class="btn btn-default">Login</button>
-            <button ng-click="signup()"class="btn btn-primary">Sign Up</button>
+            <a ng-href="#/signup"class="btn btn-primary">Sign Up</a>
           </form>
-          <ul class=" nav navbar-nav navbar-right" ng-show="sessionUser" style="padding-right:10px">
-            <li class="dropdown">
+          <ul class=" nav navbar-nav navbar-right"  style="padding-right:10px">
+            <!-- <li><a href="#">About</a></li> -->
+            <li class="dropdown" ng-show="sessionUser">
               <a href="#" class="dropdown-toggle" >Profile<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#/myExercises">My Exercises</a></li>
@@ -114,19 +120,25 @@
     <script src="bower_components/jquery.blast.min/index.js"></script>
     <script src="bower_components/jquery.ui.touch-punch.min/index.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular.audio/index.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/jspdf/index.js"></script>
     <script src="bower_components/main.min/index.js"></script>
     <script src="bower_components/ng-annotate-text-latest/index.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/FileSaver/index.js"></script>
+    <script src="bower_components/jspdf/dist/jspdf.min.js"></script>
+    <script src="bower_components/html2canvas/build/html2canvas.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/controllers/annotate.js"></script>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/annotate.js"></script>
+
+        <script src="styles/js/igrowl.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+        
+        <script src="scripts/controllers/forgot.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/controllers/Backend.js"></script>
         <script src="scripts/controllers/live.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -135,9 +147,12 @@
         <script src="scripts/controllers/pdfcontroller.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/controllers/myExercises.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+       
         
        
         <!-- endbuild -->
-        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+
+        <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
 </body>
 </html>

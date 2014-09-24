@@ -72,7 +72,7 @@
               <!-- <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Word'">Word</label> -->
           </div>
       <div ui-sortable ng-model="sortables" class="list" style="height:90%; overflow-y:scroll">
-                  <div  ng-repeat="item in sortables">
+                  <div  ng-repeat="item in sortables track by $index">
                 <ng-annotate-text
                   class="item"
                   readonly="false"
@@ -94,20 +94,30 @@
     </div>
 </div>
 <div class="content2View" ng-show="stage == 1">
-  <div class="row" style="height:65vh">
+  <div class="row" style="height:65vh; ">
     <div class="col-xs-5 col-xs-offset-1">
+      <div class="row">
+        <div class="page-header">
+          <h3>Activity Detail</h3>
+        </div>
+      </div>
       <form role="form">
         <div class="form-group">
           <label for="activityTitle">Activity Title</label>
           <input type="text" class="form-control" ng-model="activityTitle" id="activityTitle" placeholder="">
           <label for="activityDescription">Description</label>
-          <textarea type="text" class="form-control" ng-model="activityDescription" id="activityDescription" placeholder="Insert your content here..." style="height:200px"></textarea>
+          <textarea type="text" class="form-control" ng-model="activityDescription" id="activityDescription" placeholder="Please write a brief description of your text..." style="height:200px"></textarea>
           {{notes}}
         </div>
       </form>
     </div>
-    <div class="col-xs-5">
-      <div  ng-repeat="text in original">
+    <div class="col-xs-5" style="padding-bottom:300px">
+      <div class="row">
+        <div class="page-header">
+          <h3>Hints <small>Highlight the text where you would like your hints to appear</small></h3>
+        </div>
+      </div>
+      <div  ng-repeat="text in original track by $index">
             <ng-annotate-text
               class=""
               readonly="false"
@@ -126,10 +136,10 @@
   </div>
 </div>
 <div class="content3View" ng-show="stage == 2">
-  <div class="row" style="height:65vh">
-    <div id="movingaround" class="col-xs-5 col-xs-offset-1" style="height:65vh">
+  <div class="row" style="height:65vh; padding-bottom:50px">
+    <div id="movingaround" class="col-xs-6 col-xs-offset-3" style="height:65vh">
       <div ui-sortable ng-model="sortables" class="list" style="height:90%; overflow-y:scroll">
-          <div  ng-repeat="item in sortables">
+          <div  ng-repeat="item in sortables track by $index">
                 <ng-annotate-text
                   class="item"
                   readonly="false"
@@ -154,3 +164,26 @@
       <div class="navbar-text navbar-right"><button  ng-click="transition(-1)" class="btn btn-lg btn-info"># Items: {{sortables.length}}</button></div>
     </div>
   </nav>
+  <div class="modal fade" size="lg" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Congratulations!</span></h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>Your activity was successfully created! You can share it with your students at:</p><br>
+              <code>http://sentenceshuffle.com/exercise/{{activityID}}</code><p><br>
+              <p>You can also see all of your exercise under Profile> My Exercises.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

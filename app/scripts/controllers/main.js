@@ -61,6 +61,10 @@ app.controller('MainCtrl',['$scope','$routeParams','NGAnnotation','ExerciseBacke
       testObject.set("owner",$rootScope.sessionUser);
       testObject.save(null, {
         success: function(object){
+          console.log(object);
+          $scope.activityID = object.id;
+          $scope.$apply();
+          $('#successModal').modal();
           $('#saveButton').html('Saved!');
         },
         error: function(model,error){

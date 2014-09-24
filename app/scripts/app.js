@@ -5,7 +5,7 @@ var loginRequired = function($location, $q, $rootScope) {
 
     if(!$rootScope.sessionUser) {
         deferred.reject()
-        $location.path('/');
+        $location.path('/signup');
     } else {
         deferred.resolve()
     }
@@ -16,7 +16,6 @@ var app = angular.module('frontendApp', [
   'ngCookies',
   'angular-loading-bar',
   'ngResource',
-  'ngAudio',
   'ngAnnotateText',
   'ngSanitize',
   'ngRoute',
@@ -25,11 +24,15 @@ var app = angular.module('frontendApp', [
 ]);
 app.config(function (cfpLoadingBarProvider, $routeProvider, $locationProvider) {
     cfpLoadingBarProvider.latencyThreshold = 10;
-    Parse.initialize("nH0BiYugmVyCNDLHFYGBuPdUJyBLRAOMBH9DYYuw", "jHLNGNDIBFXlUak1aLhZCEnqBeq2vjUhnRQ9UusB");
+    Parse.initialize("OUU8h8AVe2mvNWLeT0aSOUZweL0Ku4uaU5xnCI0g", "bhYqJ9b4wy2xseVo6U5zMy8Y7rQAoDtJVsObXpNH");
     $routeProvider
       .when('/pdftest',{
         templateUrl:'views/pdftest.html',
         controller:'PdfController'
+      })
+      .when('/login',{
+        templateUrl:'views/login.html',
+        controller:'LoginCtrl'
       })
       .when('/',{
         templateUrl:'views/principal.html',
@@ -44,6 +47,14 @@ app.config(function (cfpLoadingBarProvider, $routeProvider, $locationProvider) {
         templateUrl: '/views/liveview.html',
         controller:'LiveCtrl',
         resolve:{loginRequired: loginRequired}
+      })
+      .when('/forgot',{
+        templateUrl:'views/forgot.html',
+        controller: 'ForgotCtrl'
+      })
+      .when('/signup',{
+        templateUrl:'views/signup.html',
+        controller:'SignupCtrl'
       })
       .when('/myExercises',{
         templateUrl: '/views/myexercises.html',

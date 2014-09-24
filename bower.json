@@ -16,12 +16,13 @@
     "jquery.blast.min": "https://raw.githubusercontent.com/julianshapiro/blast/master/jquery.blast.min.js",
     "jquery.ui.touch-punch.min": "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js",
     "angular-bootstrap": "~0.11.0",
-    "angular.audio": "https://raw.githubusercontent.com/danielstern/ngAudio/master/angular.audio.js",
     "underscore": "~1.6.0",
-    "jspdf": "/Users/felipecocco/Documents/workspace/GAP Projects/Version-Control/paragraphscrambler/frontend/app/jsPDF/jspdf.js",
     "main.min": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/gh-pages/dist/main.min.js",
     "ng-annotate-text-latest": "https://raw.githubusercontent.com/DigiExam/ng-annotate-text/master/dist/ng-annotate-text-latest.js",
-    "angular-loading-bar": "~0.5.2"
+    "angular-loading-bar": "~0.5.2",
+    "FileSaver": "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.js",
+    "jspdf": "~1.0.178",
+    "html2canvas": "~0.4.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
